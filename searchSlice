@@ -1,4 +1,4 @@
-//			searches through a z stack for the brightest slice also finds any bleached pixels
+//	searches through a z stack for the brightest slice also finds any bleached pixels
 //      there should be an open image coming into this script.
 //      the script returns maxslice as the brightest in the stack
 //      if there were bleached pixels in any of the slices an error value is returned for maxslice
@@ -6,23 +6,23 @@
 
 
 function searchSlice() {
-	bleach="no";						  	  // set the bleach variable to "no"
-	bleachvalue=4095;             // set the pixel value that indicates that a pixel is bleached out
-	maxslice=0;						  	    // set the max slice to zero
-	imax=0;								        // set the image maximum to zero
-	numslices=nSlices;						// get the number of z sections in this image
-	for (w=1;w<=nSlices; w++) {		// for each slice in the stack...
-		setSlice(w);							  // go to the w slice
-		getStatistics(area, mean, min, max);		// get the area, mean, min, max values from this slice
-		if (max>bleachvalue) {			// if there are any bleached pixels...
-			bleach="yes";							// set bleach to "yes"
+	bleach="no";			// set the bleach variable to "no"
+	bleachvalue=4095;             	// set the pixel value that indicates that a pixel is bleached out
+	maxslice=0;			// set the max slice to zero
+	imax=0;				// set the image maximum to zero
+	numslices=nSlices;		// get the number of z sections in this image
+	for (w=1;w<=nSlices; w++) {	// for each slice in the stack...
+		setSlice(w);		// go to the w slice
+		getStatistics(area, mean, min, max);	// get the area, mean, min, max values from this slice
+		if (max>bleachvalue) {	// if there are any bleached pixels...
+			bleach="yes";	// set bleach to "yes"
 		}
-		if (mean>imax) {						// if the mean is larger than the maximum value...
-			imax=mean;								// set the maximum as the current mean
-			maxslice=w;								// set the max slice as the current slice
+		if (mean>imax) {	// if the mean is larger than the maximum value...
+			imax=mean;	// set the maximum as the current mean
+			maxslice=w;	// set the max slice as the current slice
 		}
 	}
-	if (bleach=="yes") {						// if there were bleached pixels
-		maxslice = 1;					      	// set maxslice to 1 if there were bleached pixels
+	if (bleach=="yes") {		// if there were bleached pixels
+		maxslice = 1;		// set maxslice to 1 if there were bleached pixels
 	}
 }
