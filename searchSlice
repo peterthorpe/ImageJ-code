@@ -1,4 +1,4 @@
-//	searches through a z stack for the brightest slice also finds any bleached pixels
+//	searches through a z stack for the brightest slice, also finds any bleached pixels
 //      there should be an open image coming into this script.
 //      the script returns maxslice as the brightest in the stack
 //      if there were bleached pixels in any of the slices an error value is returned for maxslice
